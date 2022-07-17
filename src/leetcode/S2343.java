@@ -11,14 +11,18 @@ public class S2343 {
     public static int[] smallestTrimmedNumbers(String[] nums, int[][] q) {
         int sLength=nums[0].length();
         int[][] sInd=new int[sLength][nums.length];
+        char[][] a=new char[nums.length][];
+        for(int i=0;i<nums.length;i++) {
+            a[i]=nums[i].toCharArray();
+        }
 
         int[] c=new int[10];
 
         for(int i=0;i<sLength;i++) {
             int charInd=sLength-i-1;
             Arrays.fill(c, 0);
-            for(String s: nums) {
-                c[s.charAt(charInd)-'0']++;
+            for(char[] arr: a) {
+                c[arr[charInd]-'0']++;
             }
 
             for(int j=1;j<10;j++) {
@@ -27,7 +31,7 @@ public class S2343 {
 
             for(int j=nums.length-1;j>=0;j--) {
                 int ind=i!=0?sInd[i-1][j]:j;
-                sInd[i][--c[nums[ind].charAt(charInd)-'0']]=ind;
+                sInd[i][--c[a[ind][charInd]-'0']]=ind;
             }
         }
 

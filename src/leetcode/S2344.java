@@ -24,23 +24,16 @@ public class S2344 {
         return -1;
     }
 
-    static int gcd(int a, int b) {
-        if(a<b) {
+    static int gcd(int aa, int bb) {
+        int a=Math.max(aa,bb);
+        int b=Math.min(aa,bb);
+        while(b!=0) {
+            a%=b;
             int t=a;
             a=b;
             b=t;
         }
 
-        while(a%b!=0) {
-            a-=b;
-
-            if(a<b) {
-                int t=a;
-                a=b;
-                b=t;
-            }
-        }
-
-        return b;
+        return a;
     }
 }
