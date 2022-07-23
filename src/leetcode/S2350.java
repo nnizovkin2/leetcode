@@ -1,16 +1,21 @@
 package leetcode;
 
-import java.util.BitSet;
+import java.util.Arrays;
 
-public class S2350 {
+class S2350 {
     public static int shortestSequence(int[] rolls, int k) {
         int res=1;
-        BitSet s=new BitSet(k);
+        boolean[] s=new boolean[k];
+        int v=0;
         for(int i=0;i<rolls.length;i++) {
-            s.set(rolls[i]-1);
-            if(s.cardinality()==k) {
+            if(!s[rolls[i]-1]) {
+                s[rolls[i]-1]=true;
+                v++;
+            }
+            if(v==k) {
                 res++;
-                s.clear();
+                v=0;
+                Arrays.fill(s,false);
             }
         }
 

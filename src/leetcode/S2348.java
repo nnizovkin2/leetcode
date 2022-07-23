@@ -2,9 +2,9 @@ package leetcode;
 
 public class S2348 {
     public static void main(String[] args) {
-        System.out.println(zeroFilledSubarray(new int[]{0,0,0,1,0,0}));
+//        System.out.println(zeroFilledSubarray(new int[]{0,0,0,1,0,0}));
     }
-    public static long zeroFilledSubarray(int[] nums) {
+    public long zeroFilledSubarray(int[] nums) {
         long res=0;
         long c=0;
         for(int n: nums) {
@@ -16,7 +16,7 @@ public class S2348 {
             }
         }
 
-        res+=c*(c+1);
+        res+=c*(c+1)/2;
         return res;
     }
 }
