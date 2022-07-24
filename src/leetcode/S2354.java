@@ -1,14 +1,23 @@
 package leetcode;
 
-import java.util.HashSet;
+import java.util.Arrays;
 
 public class S2354 {
     public long countExcellentPairs(int[] nums, int k) {
         int[] c=new int[32];
-        HashSet<Integer> d=new HashSet<>();
 
-        for(int n: nums) {
-            d.add(n);
+        Arrays.sort(nums);
+        int dn=1;
+        for(int i=1;i<nums.length;i++) {
+            if(nums[i]!=nums[i-1]) dn++;
+        }
+
+        int[] d=new int[dn];
+
+        int ind=0;
+        d[ind++]=nums[0];
+        for(int i=1;i<nums.length;i++) {
+            if(nums[i]!=nums[i-1]) d[ind++]=nums[i];
         }
 
         for(int n: d) {
